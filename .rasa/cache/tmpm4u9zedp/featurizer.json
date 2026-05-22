@@ -1,0 +1,67 @@
+{
+  "type": "MaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "abrir_chamado": 0,
+        "atualizar_email": 1,
+        "back": 2,
+        "consultar_status": 3,
+        "goodbye": 4,
+        "greet": 5,
+        "inform": 6,
+        "nlu_fallback": 7,
+        "out_of_scope": 8,
+        "restart": 9,
+        "session_start": 10
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "action_cadastrar_chamado": 13,
+        "action_consultar_status": 14,
+        "action_atualizar_email": 15,
+        "utter_ask_id_ordem": 16,
+        "utter_ask_modelo": 17,
+        "utter_ask_nome": 18,
+        "utter_ask_novo_email": 19,
+        "utter_ask_problema": 20,
+        "utter_ask_telefone": 21,
+        "utter_goodbye": 22,
+        "utter_greet": 23,
+        "form_abrir_chamado": 24,
+        "form_consultar_status": 25,
+        "form_atualizar_email": 26
+      },
+      "entities": {
+        "id_ordem": 0,
+        "modelo": 1,
+        "nome": 2,
+        "novo_email": 3,
+        "problema": 4,
+        "telefone": 5
+      },
+      "slots": {},
+      "active_loop": {
+        "form_abrir_chamado": 0,
+        "form_consultar_status": 1,
+        "form_atualizar_email": 2
+      }
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 5
+}

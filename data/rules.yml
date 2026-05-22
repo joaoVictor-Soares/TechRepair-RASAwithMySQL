@@ -1,13 +1,30 @@
 version: "3.1"
 
 rules:
+  - rule: Responder Saudação Inicial
+    steps:
+      - intent: greet
+      - action: utter_greet
 
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - rule: Responder Despedida
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
 
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - rule: Ativação do Formulário de Cadastro
+    steps:
+      - intent: abrir_chamado
+      - action: form_abrir_chamado
+      - active_loop: form_abrir_chamado
+
+  - rule: Ativação do Formulário de Status
+    steps:
+      - intent: consultar_status
+      - action: form_consultar_status
+      - active_loop: form_consultar_status
+
+  - rule: Ativação do Formulário de Email
+    steps:
+      - intent: atualizar_email
+      - action: form_atualizar_email
+      - active_loop: form_atualizar_email

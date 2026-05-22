@@ -3,32 +3,121 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+  - abrir_chamado
+  - consultar_status
+  - atualizar_email
+  - inform
+
+entities:
+  - nome
+  - telefone
+  - modelo
+  - problema
+  - novo_email
+  - id_ordem
+
+slots:
+  nome:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: form_abrir_chamado
+            requested_slot: nome
+
+  telefone:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: form_abrir_chamado
+            requested_slot: telefone
+          - active_loop: form_atualizar_email
+            requested_slot: telefone
+      - type: from_entity
+        entity: telefone
+
+  modelo:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: form_abrir_chamado
+            requested_slot: modelo
+
+  problema:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: form_abrir_chamado
+            requested_slot: problema
+
+  novo_email:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: form_atualizar_email
+            requested_slot: novo_email
+
+  id_ordem:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: form_consultar_status
+            requested_slot: id_ordem
+      - type: from_entity
+        entity: id_ordem
+
+forms:
+  form_abrir_chamado:
+    required_slots:
+      - nome
+      - telefone
+      - modelo
+      - problema
+  form_consultar_status:
+    required_slots:
+      - id_ordem
+  form_atualizar_email:
+    required_slots:
+      - telefone
+      - novo_email
+
+actions:
+  - action_cadastrar_chamado
+  - action_consultar_status
+  - action_atualizar_email
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+    - text: "Olá! Bem-vindo ao suporte da TechRepair. Como posso te ajudar hoje?"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Obrigado por entrar em contato com a TechRepair. Até mais!"
 
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  utter_ask_nome:
+    - text: "Por favor, digite o seu nome completo:"
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  utter_ask_telefone:
+    - text: "Qual é o seu número de telefone de contato (com DDD)?"
+
+  utter_ask_modelo:
+    - text: "Qual é o modelo e a marca do seu aparelho?"
+
+  utter_ask_problema:
+    - text: "Por favor, descreva brevemente o problema do aparelho:"
+
+  utter_ask_id_ordem:
+    - text: "Por favor, informe o ID da sua Ordem de Serviço ou o seu número de telefone registrado:"
+
+  utter_ask_novo_email:
+    - text: "Qual é o seu novo endereço de e-mail de contato?"

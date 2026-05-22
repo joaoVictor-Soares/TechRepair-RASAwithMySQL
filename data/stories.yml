@@ -1,30 +1,46 @@
 version: "3.1"
 
 stories:
+  - story: Fluxo Completo - Abertura de Chamado (INSERT)
+    steps:
+      - intent: abrir_chamado
+      - action: form_abrir_chamado
+      - active_loop: form_abrir_chamado
+      - slot_was_set:
+          - requested_slot: nome
+      - slot_was_set:
+          - requested_slot: telefone
+      - slot_was_set:
+          - requested_slot: modelo
+      - slot_was_set:
+          - requested_slot: problema
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_cadastrar_chamado
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - story: Fluxo Completo - Consulta de Status (SELECT)
+    steps:
+      - intent: consultar_status
+      - action: form_consultar_status
+      - active_loop: form_consultar_status
+      - slot_was_set:
+          - requested_slot: id_ordem
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_consultar_status
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - story: Fluxo Completo - Atualização de Email (UPDATE)
+    steps:
+      - intent: atualizar_email
+      - action: form_atualizar_email
+      - active_loop: form_atualizar_email
+      - slot_was_set:
+          - requested_slot: telefone
+      - slot_was_set:
+          - requested_slot: novo_email
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_atualizar_email

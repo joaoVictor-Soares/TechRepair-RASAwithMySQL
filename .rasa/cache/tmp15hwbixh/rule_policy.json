@@ -1,0 +1,42 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"abrir_chamado\"}}]": "form_abrir_chamado",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"abrir_chamado\"}}, {\"active_loop\": {\"name\": \"form_abrir_chamado\"}, \"prev_action\": {\"action_name\": \"form_abrir_chamado\"}, \"user\": {\"intent\": \"abrir_chamado\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"atualizar_email\"}}]": "form_atualizar_email",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"atualizar_email\"}}, {\"active_loop\": {\"name\": \"form_atualizar_email\"}, \"prev_action\": {\"action_name\": \"form_atualizar_email\"}, \"user\": {\"intent\": \"atualizar_email\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}]": "utter_goodbye",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}, {\"prev_action\": {\"action_name\": \"utter_goodbye\"}, \"user\": {\"intent\": \"goodbye\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"greet\"}}]": "utter_greet",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"greet\"}}, {\"prev_action\": {\"action_name\": \"utter_greet\"}, \"user\": {\"intent\": \"greet\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"consultar_status\"}}]": "form_consultar_status",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"consultar_status\"}}, {\"active_loop\": {\"name\": \"form_consultar_status\"}, \"prev_action\": {\"action_name\": \"form_consultar_status\"}, \"user\": {\"intent\": \"consultar_status\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [
+      "form_atualizar_email",
+      "form_consultar_status",
+      "form_abrir_chamado"
+    ],
+    "rules_for_loop_unhappy_path": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"form_abrir_chamado\"}, \"prev_action\": {\"action_name\": \"form_abrir_chamado\"}, \"user\": {\"intent\": \"abrir_chamado\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"form_atualizar_email\"}, \"prev_action\": {\"action_name\": \"form_atualizar_email\"}, \"user\": {\"intent\": \"atualizar_email\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"form_consultar_status\"}, \"prev_action\": {\"action_name\": \"form_consultar_status\"}, \"user\": {\"intent\": \"consultar_status\"}}]": "do_not_predict_loop_action"
+    },
+    "rules_not_in_stories": [
+      "predicting default action with intent session_start",
+      "handling active loops and forms - form_atualizar_email",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}, {\"prev_action\": {\"action_name\": \"utter_goodbye\"}, \"user\": {\"intent\": \"goodbye\"}}]",
+      "handling active loops and forms - form_abrir_chamado",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}]",
+      "handling active loops and forms - form_consultar_status - action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"greet\"}}]",
+      "handling active loops and forms - form_atualizar_email - action_listen",
+      "handling active loops and forms - form_abrir_chamado - action_listen",
+      "handling active loops and forms - form_consultar_status",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"greet\"}}, {\"prev_action\": {\"action_name\": \"utter_greet\"}, \"user\": {\"intent\": \"greet\"}}]",
+      "predicting default action with intent restart",
+      "predicting default action with intent back"
+    ]
+  }
+}
